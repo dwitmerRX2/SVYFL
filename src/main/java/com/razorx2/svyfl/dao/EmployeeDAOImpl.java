@@ -29,6 +29,7 @@ public class EmployeeDAOImpl extends AbstractDAO<Integer, Employee> implements E
 		persist(employee);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Employee> findAllEmployees() {
 		Criteria criteria = createEntityCriteria();

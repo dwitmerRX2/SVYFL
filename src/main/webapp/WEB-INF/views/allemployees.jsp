@@ -57,7 +57,8 @@
 		         </c:forEach>
 		      </table>
 		      <br/>
-		      <a href="<c:url value='/new' />">Add New Employee</a>	    
+		      <a href="<c:url value='/new' />">Add New Employee</a>	
+		      <p>${league.name}</p>    
       </div>
     </div>
 
