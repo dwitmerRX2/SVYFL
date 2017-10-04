@@ -9,9 +9,20 @@
     <meta name="author" content="">
     
     <title>SVYFL</title>
-    
+    <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js">
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <link href="<c:url value='/resources/css/navbar-top-fixes.css' />" rel="stylesheet"></link>
+    
+    <script type="text/javascript" class="init">
+  
+			$(document).ready(function() {
+			  $('#svyfl').DataTable();
+			} );
+
+  </script>
 </head>
  
 <body>
@@ -41,31 +52,29 @@
 
     <div class="container">
       <div class="jumbotron">
-        <h1>SVYFL Standings</h1>    
-          <table>
-		         <tr>
-		           <td>NAME</td><td>Joining Date</td><td>Salary</td><td>SSN</td><td></td>
-		         </tr>
-		         <c:forEach items="${employees}" var="employee">
-		         <tr>
-		           <td>${employee.name}</td>
-		           <td>${employee.joiningDate}</td>
-		           <td>${employee.salary}</td>
-		           <td><a href="<c:url value='/edit-${employee.ssn}-employee' />">${employee.ssn}</a></td>
-		           <td><a href="<c:url value='/delete-${employee.ssn}-employee' />">delete</a></td>
-		         </tr>
-		         </c:forEach>
-		      </table>
-		      <br/>
-		      <a href="<c:url value='/new' />">Add New Employee</a>	
-		      <p>${league.name}</p>    
+	      
       </div>
+              <p>${league.name}</p>    
+        <h1>SVYFL Standings</h1>    
+        <table id="svyfl">
+           <tr>
+             <td>Home Team</td><td>Home Score</td><td>Visiting Team</td><td>Visiting Score</td><td>Date</td>
+           </tr>
+           <c:forEach items="${svyflData}" var="svyflData">
+           <tr>
+             <td>${svyflData.home}</td>
+             <td>${svyflData.home_score}</td>
+             <td>${svyflData.visitor}</td>
+             <td>${svyflData.visitor_score}</td>
+             <td>${svyflData.date}</td>
+           </tr>
+           </c:forEach>
+        </table>
     </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>    
     

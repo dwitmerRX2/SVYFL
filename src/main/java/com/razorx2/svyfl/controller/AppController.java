@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.razorx2.svyfl.model.Employee;
 import com.razorx2.svyfl.service.EmployeeService;
 import com.razorx2.svyfl.service.LeagueService;
+import com.razorx2.svyfl.service.SVYFLDataService;
 
 
 @Controller
@@ -31,6 +32,9 @@ public class AppController {
     
     @Autowired
     LeagueService leagueService;
+    
+    @Autowired
+    SVYFLDataService svyflService;
      
     @Autowired
     MessageSource messageSource;
@@ -44,6 +48,7 @@ public class AppController {
         List<Employee> employees = service.findAllEmployees();
         model.addAttribute("employees", employees);
         model.addAttribute("league", leagueService.getCurrentLeague());
+        model.addAttribute("svyflData", svyflService.getCurrentGames());
         return "allemployees";
     }
  
